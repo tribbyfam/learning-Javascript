@@ -23,8 +23,13 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
     diceDOM.style.display = 'block';
     diceDOM.src = 'dice-' + dice + '.png';
 
-    // 3. update the resulted score if the roll isn't 1
-    if (dice !== 1) {
+    // 3. update the resulted score if the roll isn't 1 or two 6 in a row will anul the total score
+    if (dice == 6 && lastDice == 6) {
+      // player looses score
+      scores[activePlayer] = 0;
+      document.querySelector('#score-' + activePlayer).textContent = 0;
+      nextPlayer();
+    } else if (dice !== 1) {
       // add score
       roundScore += dice;
       document.querySelector('#current-' + activePlayer).textContent = roundScore;
@@ -32,6 +37,7 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
       // next player
       nextPlayer();
     }
+    lastDice = dice;
   }
 });
 
