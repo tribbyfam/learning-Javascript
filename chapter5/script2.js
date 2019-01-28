@@ -59,7 +59,7 @@ interviewQuestionDesigner('Peter');
 interviewQuestionTeacher('Peter');
 
 
-// Bind, call and apply 
+// BIND, CALL AND APPLY METHODS
 var john = {
   name: "John",
   age: 26,
